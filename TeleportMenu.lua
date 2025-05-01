@@ -511,11 +511,7 @@ local function CreateSecureButton(frame, type, text, id, hearthstone)
 				end
 			end)
 	
-			-- Check if it's a cape
-			local itemLocation = ItemLocation:CreateFromEquipmentSlot(INVSLOT_BACK) -- 15 = back slot
-			local equippedItemID = itemLocation and C_Item.DoesItemExist(itemLocation) and C_Item.GetItemID(itemLocation)
-	
-			if equippedItemID ~= id then
+			if not IsItemEquipped(id) then
 				-- Not yet equipped, don't close the menu
 				return
 			end
